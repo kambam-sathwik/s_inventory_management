@@ -6,7 +6,7 @@
     <title>Inventory management</title>
 </head>
 <body>
-    <form>
+    <form onsubmit="handleSubmit(event)">
         <label for="name">Itemname</label>
         <input type="text" id="name" name="itemname">
         <label for="desc">Description</label>
@@ -21,4 +21,6 @@
 
     </ul>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+<script src="index.js"></script>
 </html>
