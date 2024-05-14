@@ -7,7 +7,7 @@ function handleSubmit(event){
         quantity:document.querySelector('#quan').value
     }
     axios
-    .post("https://crudcrud.com/api/26ba8db1a4c94200969a1728a1f37e55/inventory_data",item_details)
+    .post("https://crudcrud.com/api/bdfbf4f2e4df461e8e24962a935b4abf/inventory_data",item_details)
     .then((res)=>displayitem(res.data))
     .catch((err)=>console.log(err))
     document.querySelector('#name').value="";
@@ -27,7 +27,7 @@ function displayitem(item){
             list.removeChild(nli);
             item.quantity=item.quantity-1;
             axios
-            .put(`https://crudcrud.com/api/26ba8db1a4c94200969a1728a1f37e55/inventory_data/${item._id}`,{
+            .put(`https://crudcrud.com/api/bdfbf4f2e4df461e8e24962a935b4abf/inventory_data/${item._id}`,{
                 itemname:item.itemname,
                 description:item.description,
                 price:item.price,
@@ -41,7 +41,7 @@ function displayitem(item){
             list.removeChild(nli);
             item.quantity=item.quantity-2;
             axios
-            .put(`https://crudcrud.com/api/26ba8db1a4c94200969a1728a1f37e55/inventory_data/${item._id}`,{
+            .put(`https://crudcrud.com/api/bdfbf4f2e4df461e8e24962a935b4abf/inventory_data/${item._id}`,{
                 itemname:item.itemname,
                 description:item.description,
                 price:item.price,
@@ -55,7 +55,7 @@ function displayitem(item){
             list.removeChild(nli);
             item.quantity=item.quantity-3;
             axios
-            .put(`https://crudcrud.com/api/26ba8db1a4c94200969a1728a1f37e55/inventory_data/${item._id}`,{
+            .put(`https://crudcrud.com/api/bdfbf4f2e4df461e8e24962a935b4abf/inventory_data/${item._id}`,{
                 itemname:item.itemname,
                 description:item.description,
                 price:item.price,
@@ -66,3 +66,12 @@ function displayitem(item){
         }
     }
 }
+window.addEventListener("DOMContentLoaded",()=>{
+    axios.get("https://crudcrud.com/api/bdfbf4f2e4df461e8e24962a935b4abf/inventory_data")
+    .then((res)=>{
+        for(let i=0;i<res.data.length;i++){
+            displayitem(res.data[i]);
+        }
+    })
+    .catch((err)=>console.log(err))
+})
